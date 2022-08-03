@@ -1,6 +1,16 @@
 import { Link, routes } from '@redwoodjs/router'
-import { MetaTags } from '@redwoodjs/web'
-import { FieldError, Form, Label, TextField, TextAreaField, Submit, SubmitHandler } from '@redwoodjs/forms'
+import { MetaTags, useMutation } from '@redwoodjs/web'
+import { toast, Toaster } from '@redwoodjs/web/toast'
+import { FieldError, Form, FormError, Label, TextField, TextAreaField, Submit, SubmitHandler, useForm } from '@redwoodjs/forms'
+import { CreateContactMutation, CreateContactMutationVariables } from 'types/graphql'
+
+const CREATE_CONTACT = gql`
+  mutation CreateContactMutation($input: CreateContactInput!) {
+    createContact(input: $input) {
+      id
+    }
+  }
+`
 
 interface FormValues {
   name: string
@@ -9,8 +19,19 @@ interface FormValues {
 }
 
 const ContactPage = () => {
+  const formMethods = useForm({ mode: 'onBlur' })
+  const [create, { loading, error }] = useMutation<
+    CreateContactMutation,
+    CreateContactMutationVariables
+  >(CREATE_CONTACT, {
+    onCompleted: () => {
+      toast.success('Thank you for your message!')
+      formMethods.reset()
+    },
+  })
+
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log(data)
+    create({ variables: { input: data } })
   }
 
   return (
@@ -22,7 +43,10 @@ const ContactPage = () => {
         Contact us through this form
       </p>
 
-      <Form onSubmit={onSubmit} config={{ mode: 'onBlur' }}>
+      <Toaster />
+      <Form onSubmit={onSubmit} error={error} formMethods={formMethods}>
+        <FormError error={error} titleStyle={{ "color": "red" }} listStyle={{ "color": "red" }} listItemStyle={{ "color": "red" }} />
+
         <Label name="name" errorStyle={{ "color": "red" }} >Name</Label>
         <TextField name="name" validation={{ required: true }} errorStyle={{ "border": "1px solid red" }} />
         <FieldError name="name" style={{ "color": "red" }} />
@@ -45,7 +69,7 @@ const ContactPage = () => {
         <TextAreaField name="message" validation={{ required: true }} errorStyle={{ "border": "1px solid red" }} />
         <FieldError name="message" style={{ "color": "red" }} />
 
-        <Submit>Send message</Submit>
+        <Submit disabled={loading}>Send message</Submit>
       </Form>
     </>
   )
