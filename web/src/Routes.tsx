@@ -16,15 +16,16 @@ const Routes = () => {
   return (
     <Router>
       <Set wrap={CoursesLayout}>
-        <Route path="/courses/new" page={CourseNewCoursePage} name="newCourse" />
-        <Route path="/courses/{id:Int}/edit" page={CourseEditCoursePage} name="editCourse" />
-        <Route path="/courses/{id:Int}" page={CourseCoursePage} name="course" />
-        <Route path="/courses" page={CourseCoursesPage} name="courses" />
+        <Route path="/admin/courses/new" page={CourseNewCoursePage} name="newCourse" />
+        <Route path="/admin/courses/{id:Int}/edit" page={CourseEditCoursePage} name="editCourse" />
+        <Route path="/admin/courses/{id:Int}" page={CourseCoursePage} name="adminCourse" />
+        <Route path="/admin/courses" page={CourseCoursesPage} name="adminCourses" />
       </Set>
       <Set wrap={ShellLayout}>
         <Route path="/" page={HomePage} name="home" />
         <Route path="/dashboard" page={DashboardPage} name="dashboard" />
         <Route path="/courses" page={CoursesPage} name="courses" />
+        <Route path="/course/{id:Int}" page={CoursePage} name="course" />
         <Route path="/contact" page={ContactPage} name="contact" />
         <Route notfound page={NotFoundPage} />
       </Set>
