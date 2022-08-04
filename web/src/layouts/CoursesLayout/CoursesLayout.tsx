@@ -12,7 +12,7 @@ const CoursesLayout = ({ children }: CourseLayoutProps) => {
       <header className="rw-header">
         <h1 className="rw-heading rw-heading-primary">
           <Link
-            to={routes.courses()}
+            to={routes.adminCourses()}
             className="rw-link"
           >
             Courses

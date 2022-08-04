@@ -49,7 +49,7 @@ const Course = ({ course }) => {
   const [deleteCourse] = useMutation(DELETE_COURSE_MUTATION, {
     onCompleted: () => {
       toast.success('Course deleted')
-      navigate(routes.courses())
+      navigate(routes.adminCourses())
     },
     onError: (error) => {
       toast.error(error.message)

@@ -16,7 +16,7 @@ const NewCourse = () => {
   const [createCourse, { loading, error }] = useMutation(CREATE_COURSE_MUTATION, {
     onCompleted: () => {
       toast.success('Course created')
-      navigate(routes.courses())
+      navigate(routes.adminCourses())
     },
     onError: (error) => {
       toast.error(error.message)

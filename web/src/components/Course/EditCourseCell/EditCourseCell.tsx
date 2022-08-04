@@ -38,7 +38,7 @@ export const Success = ({ course }: CellSuccessProps<EditCourseById>) => {
   const [updateCourse, { loading, error }] = useMutation(UPDATE_COURSE_MUTATION, {
     onCompleted: () => {
       toast.success('Course updated')
-      navigate(routes.courses())
+      navigate(routes.adminCourses())
     },
     onError: (error) => {
       toast.error(error.message)

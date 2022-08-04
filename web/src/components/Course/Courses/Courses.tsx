@@ -96,7 +96,7 @@ const CoursesList = ({ courses }) => {
               <td>
                 <nav className="rw-table-actions">
                   <Link
-                    to={routes.course({ id: course.id })}
+                    to={routes.adminCourse({ id: course.id })}
                     title={'Show course ' + course.id + ' detail'}
                     className="rw-button rw-button-small"
                   >
