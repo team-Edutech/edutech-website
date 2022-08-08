@@ -7,8 +7,8 @@ export const schema = gql`
   }
 
   type Query {
-    courses: [Course!]! @requireAuth
-    course(id: Int!): Course @requireAuth
+    courses: [Course!]! @skipAuth
+    course(id: Int!): Course @skipAuth
   }
 
   input CreateCourseInput {
