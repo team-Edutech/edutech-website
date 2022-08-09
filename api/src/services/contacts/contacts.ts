@@ -21,3 +21,9 @@ export const createContact: MutationResolvers['createContact'] = ({
     data: input,
   })
 }
+
+export const deleteContact: MutationResolvers['deleteContact'] = ({ id }) => {
+  return db.contact.delete({
+    where: { id },
+  })
+}
