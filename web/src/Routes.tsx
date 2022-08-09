@@ -9,6 +9,8 @@
 
 import { Router, Route, Set, Private } from '@redwoodjs/router'
 
+import ContactsLayout from 'src/layouts/ContactsLayout'
+
 import CoursesLayout from 'src/layouts/CoursesLayout'
 import ShellLayout from 'src/layouts/ShellLayout'
 
@@ -25,6 +27,10 @@ const Routes = () => {
           <Route path="/admin/courses/{id:Int}/edit" page={CourseEditCoursePage} name="editCourse" />
           <Route path="/admin/courses/{id:Int}" page={CourseCoursePage} name="adminCourse" />
           <Route path="/admin/courses" page={CourseCoursesPage} name="adminCourses" />
+        </Set>
+        <Set wrap={ContactsLayout}>
+          <Route path="/admin/contacts/{id:Int}" page={ContactContactPage} name="adminContact" />
+          <Route path="/admin/contacts" page={ContactContactsPage} name="adminContacts" />
         </Set>
       </Private>
       <Set wrap={ShellLayout}>
