@@ -12,7 +12,7 @@ const UsersLayout = ({ children }: UserLayoutProps) => {
       <header className="rw-header">
         <h1 className="rw-heading rw-heading-primary">
           <Link
-            to={routes.users()}
+            to={routes.adminUsers()}
             className="rw-link"
           >
             Users

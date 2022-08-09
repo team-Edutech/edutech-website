@@ -102,7 +102,7 @@ const UsersList = ({ users }) => {
               <td>
                 <nav className="rw-table-actions">
                   <Link
-                    to={routes.user({ id: user.id })}
+                    to={routes.adminUser({ id: user.id })}
                     title={'Show user ' + user.id + ' detail'}
                     className="rw-button rw-button-small"
                   >

@@ -24,6 +24,7 @@ const Routes = () => {
       <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
       <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
       <Private unauthenticated="home">
+        <Route path="/admin" page={AdminPage} name="admin" />
         <Set wrap={CoursesLayout}>
           <Route path="/admin/courses/new" page={CourseNewCoursePage} name="newCourse" />
           <Route path="/admin/courses/{id:Int}/edit" page={CourseEditCoursePage} name="editCourse" />
@@ -36,8 +37,8 @@ const Routes = () => {
         </Set>
         <Set wrap={UsersLayout}>
           <Route path="/admin/users/{id:Int}/edit" page={UserEditUserPage} name="editUser" />
-          <Route path="/admin/users/{id:Int}" page={UserUserPage} name="user" />
-          <Route path="/admin/users" page={UserUsersPage} name="users" />
+          <Route path="/admin/users/{id:Int}" page={UserUserPage} name="adminUser" />
+          <Route path="/admin/users" page={UserUsersPage} name="adminUsers" />
         </Set>
       </Private>
       <Set wrap={ShellLayout}>

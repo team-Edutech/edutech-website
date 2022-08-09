@@ -44,7 +44,7 @@ export const Success = ({ user }: CellSuccessProps<EditUserById>) => {
   const [updateUser, { loading, error }] = useMutation(UPDATE_USER_MUTATION, {
     onCompleted: () => {
       toast.success('User updated')
-      navigate(routes.users())
+      navigate(routes.adminUsers())
     },
     onError: (error) => {
       toast.error(error.message)

@@ -49,7 +49,7 @@ const User = ({ user }) => {
   const [deleteUser] = useMutation(DELETE_USER_MUTATION, {
     onCompleted: () => {
       toast.success('User deleted')
-      navigate(routes.users())
+      navigate(routes.adminUsers())
     },
     onError: (error) => {
       toast.error(error.message)
